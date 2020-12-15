@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CompanyService.Domain.Contracts;
+using CompanyService.Dtos;
 using CompanyService.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,25 +15,25 @@ namespace CompanyService.Controllers
     [ApiController]
     public class CompanyController : ControllerBase
     {
-        readonly ICompanyRepository repo ;
+        readonly ICompanyService service ;
 
-        public CompanyController(ICompanyRepository repo)
+        public CompanyController(ICompanyService service)
         {
-            this.repo = repo;
+            this.service = service;
         }
 
         // GET: api/company
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(repo.GetCompanies());
+            return Ok(service.GetCompanies());
         }
 
         // GET api/company/id
         [HttpGet("{code}")]
         public IActionResult GetById(string code)
         {
-            var Obj = repo.GetCompany(code);
+            var Obj = service.GetCompany(code);
             if (Obj == null)
                 return NotFound();
 
@@ -42,7 +43,7 @@ namespace CompanyService.Controllers
         [HttpGet("filter/{cname}")]
         public IActionResult GetMatching(string cname)
         {
-            var Obj = repo.GetMatchingCompanies(cname);
+            var Obj = service.GetMatchingCompanies(cname);
             if (Obj == null)
                 return NotFound();
 
@@ -53,7 +54,7 @@ namespace CompanyService.Controllers
         [HttpGet("{code}/ipos")]
         public IActionResult GetCompanyIPODetails(string code)
         {
-            return Ok(repo.GetCompanyIPODetails(code));
+            return Ok(service.GetCompanyIPODetails(code));
         }
         [HttpGet("{code}/stocks/{fromDT}/{toDt}/{period}")]
         public IActionResult GetCompanyStockPrice(string code, DateTime fromDt, DateTime toDt, string period)
@@ -62,15 +63,15 @@ namespace CompanyService.Controllers
             {
                 return BadRequest("Invalid Dates");
             }
-            return Ok(repo.GetCompanyStockPrice(code, fromDt, toDt, period));
+            return Ok(service.GetCompanyStockPrice(code, fromDt, toDt, period));
         }
 
 
         // POST api/company
         [HttpPost]
-        public IActionResult AddCompany([FromBody] Company company)
+        public IActionResult AddCompany([FromBody] CompanyDto company)
         {
-            var result = repo.AddCompany(company);
+            var result = service.AddCompany(company);
             if (!result)
                 return BadRequest("Error saving Company");
             return Created("No Url", new { message = "Company addded" });
@@ -78,17 +79,17 @@ namespace CompanyService.Controllers
 
         // PUT api/company/id
         [HttpPut("{code}")]
-        public IActionResult UpdateCompany(string code, [FromBody] Company obj)
+        public IActionResult UpdateCompany(string code, [FromBody] CompanyDto obj)
         {
             if (obj == null)
                 return BadRequest("Company is required");
 
-            var com = repo.GetCompany(obj.CompanyCode);
+            var com = service.GetCompany(obj.CompanyCode);
 
             if (com == null)
                 return NotFound();
 
-            var result = repo.UpdateCompany(obj);
+            var result = service.UpdateCompany(obj);
             if (result)
                 return Ok("Company Updated");
             else
@@ -99,12 +100,12 @@ namespace CompanyService.Controllers
         [HttpDelete("{code}")]
         public IActionResult Delete(string code)
         {
-            var com = repo.GetCompany(code);
+            var com = service.GetCompany(code);
 
             if (com == null)
                 return NotFound();
 
-            var result = repo.DeleteCompany(code);
+            var result = service.DeleteCompany(code);
             if (result)
                 return NoContent();
             else

@@ -12,6 +12,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Mvc;
 using CompanyService.Entities;
+using AutoMapper;
+using CompanyService.AutoMapperProfiles;
+using CompanyService.Dtos;
 //using WebApiDemo.Dtos;
 
 namespace CompanyServiceTests
@@ -33,13 +36,13 @@ namespace CompanyServiceTests
             CompanyDbContext ObjContext = new CompanyDbContext(options);
             ICompanyRepository ObjRepository = new CompanyRepository(ObjContext);
             repo = new CompanyRepository(ObjContext);
-            //Mapper ObjMapper = new Mapper(new MapperConfiguration(config =>
-            //{
-            //    config.AddProfile(new ProductsDtoProfile());
-            //}));
+            Mapper ObjMapper = new Mapper(new MapperConfiguration(config =>
+            {
+                config.AddProfile(new CompanyDtoProfile());
+            }));
 
-            //IProductService ObjService = new ProductService(ObjRepository, ObjMapper);
-            Cs = new CompanyController(ObjRepository);
+            ICompanyService ObjService = new CompanyService.Domain.Services.CompanyService(ObjRepository, ObjMapper);
+            Cs = new CompanyController(ObjService);
         }
 
         [Test]
@@ -82,7 +85,7 @@ namespace CompanyServiceTests
 
         public void AddCompanyTest_ForSuccessStatusCode()
         {
-            var com = new Company()
+            var com = new CompanyDto()
             {
                 CompanyCode = "test-com6",
                 BoardOfDirectors = "ABC,DEC,BFG",
@@ -103,7 +106,7 @@ namespace CompanyServiceTests
         [Test]
         public void UpdateCompanyTest_ForSuccessStatusCode()
         {
-            Company com = new Company()
+            CompanyDto com = new CompanyDto()
             {
                 CompanyCode = "test-com6",
                 BoardOfDirectors = "ABC,DEC,BFG",

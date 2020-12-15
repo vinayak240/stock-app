@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CompanyService.Domain.Contracts;
+using CompanyService.Dtos;
 using CompanyService.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,20 +15,20 @@ namespace CompanyService.Controllers
     [ApiController]
     public class IPOController : ControllerBase
     {
-        readonly IIPORepository repo;
+        readonly IIPOService service;
 
-        public IPOController(IIPORepository repo)
+        public IPOController(IIPOService service)
         {
-            this.repo = repo;
+            this.service = service;
         }
 
         // POST api/ipo
         [HttpPost]
-        public IActionResult AddIPO([FromBody] IPO ipo)
+        public IActionResult AddIPO([FromBody] IPODto ipo)
         {
             //string str = ipo.OpenDate.ToString();
             //ipo.OpenDate = DateTime.Parse(str);
-            var result = repo.AddIPO(ipo);
+            var result = service.AddIPO(ipo);
             if (!result)
                 return BadRequest("Error saving IPO");
             return Created("No Url", new { message = "IPO addded"});

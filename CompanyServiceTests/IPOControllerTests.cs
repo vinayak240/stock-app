@@ -12,6 +12,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Mvc;
 using CompanyService.Entities;
+using AutoMapper;
+using CompanyService.AutoMapperProfiles;
+using CompanyService.Domain.Services;
+using CompanyService.Dtos;
 
 namespace CompanyServiceTests
 {
@@ -33,18 +37,18 @@ namespace CompanyServiceTests
             CompanyDbContext ObjContext = new CompanyDbContext(options);
             IIPORepository ObjRepository = new IPORepository(ObjContext);
             repo = new IPORepository(ObjContext);
-            //Mapper ObjMapper = new Mapper(new MapperConfiguration(config =>
-            //{
-            //    config.AddProfile(new ProductsDtoProfile());
-            //}));
+            Mapper ObjMapper = new Mapper(new MapperConfiguration(config =>
+            {
+                config.AddProfile(new IPODtoProfile());
+            }));
 
-            //IProductService ObjService = new ProductService(ObjRepository, ObjMapper);
-            Ic = new IPOController(ObjRepository);
+            IIPOService ObjService = new IPOService(ObjRepository, ObjMapper);
+            Ic = new IPOController(ObjService);
         }
         [Test]
         public void AddCompanyTest_ForSuccessStatusCode()
         {
-            var ipo = new IPO()
+            var ipo = new IPODto()
             {
                 CompanyCode = "Com1",
                 CompanyName = "Test Company",

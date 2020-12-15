@@ -15,6 +15,7 @@ using CompanyService.Domain.Contracts;
 using CompanyService.Domain.Repositories;
 using Microsoft.OpenApi.Models;
 using Consul;
+using AutoMapper;
 
 namespace CompanyService
 {
@@ -36,6 +37,10 @@ namespace CompanyService
             services.AddScoped<ICompanyRepository, CompanyRepository>();
             services.AddScoped<IIPORepository, IPORepository>();
             services.AddScoped<IStockPriceRepository, StockPriceRepository>();
+            services.AddScoped<ICompanyService, Domain.Services.CompanyService>();
+            services.AddScoped<IIPOService, Domain.Services.IPOService>();
+            services.AddScoped<IStockPriceService, Domain.Services.StockPriceService>();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddSwaggerGen(options => options.SwaggerDoc("v1", new OpenApiInfo()
             {
                 Title = "Company Service Api",

@@ -140,4 +140,10 @@ C:\Users\nvina\Documents\phase3\stock-app\CompanyServiceTests\obj\Debug\netcorea
 C:\Users\nvina\Documents\phase3\stock-app\CompanyServiceTests\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
 C:\Users\nvina\Documents\phase3\stock-app\CompanyServiceTests\bin\Debug\netcoreapp3.1\System.Web.Http.dll
 C:\Users\nvina\Documents\phase3\stock-app\CompanyServiceTests\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
-C:\Users\nvina\Documents\phase3\stock-app\CompanyServiceTests\obj\Debug\netcoreapp3.1\CompanyServiceTests.csproj.CoreCompileInputs.cache
+C:\Users\nvina\Documents\phase3\stock-app\CompanyServiceTests\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\nvina\Documents\phase3\stock-app\CompanyServiceTests\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\nvina\Documents\phase3\stock-app\CompanyServiceTests\bin\Debug\netcoreapp3.1\Consul.dll
+C:\Users\nvina\Documents\phase3\stock-app\CompanyServiceTests\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Users\nvina\Documents\phase3\stock-app\CompanyServiceTests\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\nvina\Documents\phase3\stock-app\CompanyServiceTests\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\nvina\Documents\phase3\stock-app\CompanyServiceTests\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
