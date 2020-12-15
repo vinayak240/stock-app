@@ -39,10 +39,10 @@ namespace CompanyService.Controllers
             return Ok(Obj);
         }
 
-        [HttpGet("filter/{filter}")]
-        public IActionResult GetMatching(string filter)
+        [HttpGet("filter/{cname}")]
+        public IActionResult GetMatching(string cname)
         {
-            var Obj = repo.GetMatchingCompanies(filter);
+            var Obj = repo.GetMatchingCompanies(cname);
             if (Obj == null)
                 return NotFound();
 
@@ -73,7 +73,7 @@ namespace CompanyService.Controllers
             var result = repo.AddCompany(company);
             if (!result)
                 return BadRequest("Error saving Company");
-            return StatusCode(201);
+            return Created("No Url", new { message = "Company addded" });
         }
 
         // PUT api/company/id
@@ -90,7 +90,7 @@ namespace CompanyService.Controllers
 
             var result = repo.UpdateCompany(obj);
             if (result)
-                return Ok();
+                return Ok("Company Updated");
             else
                 return BadRequest("Update failed");
         }

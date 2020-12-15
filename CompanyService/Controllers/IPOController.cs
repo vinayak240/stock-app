@@ -30,7 +30,7 @@ namespace CompanyService.Controllers
             var result = repo.AddIPO(ipo);
             if (!result)
                 return BadRequest("Error saving IPO");
-            return StatusCode(201);
+            return Created("No Url", new { message = "IPO addded"});
         }
 
     }

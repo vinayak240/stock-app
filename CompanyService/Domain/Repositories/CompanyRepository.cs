@@ -66,54 +66,113 @@ namespace CompanyService.Domain.Repositories
         {
             var stkList = new List<StockPrice>();
             var query = from obj in context.StockPrices
-                        where obj.Date.Date >= fromDt.Date && obj.Date.Date <= toDt.Date
+                        where obj.CompanyCode == code && obj.Date.Date >= fromDt.Date && obj.Date.Date <= toDt.Date
                         select obj;
-            List<StockPrice> lst = new List<StockPrice>();
             switch (period) {
                 case "daily":
-                    DateTime dt = fromDt;
-                    int n = (toDt - fromDt).Days;
+                    //DateTime dt = fromDt;
+                    //int n = (toDt - fromDt).Days;
 
 
-                    for(int i=0; i < n; i++)
+                    //for(int i=0; i < n; i++)
+                    //{
+                    //    dt = dt.AddDays(i);
+                    //    var subquery = from obj in query.ToList()
+                    //                   where obj.Date.Date <=dt.Date
+                    //                   select obj;
+                    //    float total = subquery.Select(price => price.Price).Average();
+
+                    //    stkList.Add(new StockPrice() { Price = total, CompanyCode = code, Date = dt, ID = i }) ;
+                    //    //take average of all the stck prices the subquery...
+
+                    //}
+                    if (fromDt.Day == toDt.Day && fromDt.Month == toDt.Month && fromDt.Year == toDt.Year)
                     {
-                        dt = dt.AddDays(i);
-                        var subquery = from obj in query.ToList()
-                                       where obj.Date.Date <=dt.Date
-                                       select obj;
-                        float total = subquery.Select(price => price.Price).Average();
+                        float total = query.ToList().Select(price => price.Price).Average();
 
-                        stkList.Add(new StockPrice() { Price = total, CompanyCode = code, Date = dt, ID = i }) ;
-                        //take average of all the stck prices the subquery...
-                      
+                        stkList.Add(new StockPrice() { Price = total, CompanyCode = code, Date = toDt, ID = 0 });
+
+                        return stkList;
                     }
-                    
+
+                    DateTime dt3 = fromDt;
+                    int i3 = 0;
+                    while (dt3.Date <= toDt.Date)
+                    {
+                        DateTime curDt = dt3;
+                        DateTime prevDt = dt3.AddDays(-1);
+                        var subquery = from obj in query.ToList()
+                                       where obj.Date.Date > prevDt.Date && obj.Date.Date <= new DateTime(curDt.Year, curDt.Month, curDt.Day, 23,59,59,999)
+                                       select obj;
+                        if(subquery.ToList().Count > 0)
+                        {
+                            float total = subquery.Select(price => price.Price).Average();
+
+                            stkList.Add(new StockPrice() { Price = total, CompanyCode = code, Date = curDt, ID = i3 });
+                            //take average of all the stck prices the subquery...
+                        }
+
+                        i3++;
+                        dt3 = dt3.AddDays(i3);
+
+
+                        if (dt3.Date > toDt.Date)
+                        {
+                            subquery = from obj in query.ToList()
+                                       where obj.Date.Date > new DateTime(curDt.Year, curDt.Month, curDt.Day, 23, 59, 59, 999) && obj.Date.Date <= toDt.Date
+                                       select obj;
+                            if (subquery.ToList().Count > 0)
+                            {
+                                float total = subquery.Select(price => price.Price).Average();
+
+                                stkList.Add(new StockPrice() { Price = total, CompanyCode = code, Date = toDt, ID = i3 });
+                            }
+                        }
+
+                    }
+
                     break;
                 case "monthly":
 
                     DateTime dt1 = fromDt;
-                    int i2 = 0;    
-                    while(dt1<=toDt)
+                    int i2 = 0;  
+                    if(fromDt.Month == toDt.Month && fromDt.Year == toDt.Year)
                     {
-                       
-                        var subquery = from obj in query.ToList()
-                                       where obj.Date.Date <= dt1.Date
-                                       select obj;
-                        float total = subquery.Select(price => price.Price).Average();
+                        float total = query.ToList().Select(price => price.Price).Average();
 
-                        stkList.Add(new StockPrice() { Price = total, CompanyCode = code, Date = dt1, ID = i2 });
+                        stkList.Add(new StockPrice() { Price = total, CompanyCode = code, Date = toDt, ID = 0 });
+                        return stkList;
+                    }
+                    while(dt1.Date<=toDt.Date)
+                    {
+                        DateTime curDt = dt1;
+                        DateTime prevDt = dt1.AddDays(-1);
+                        var subquery = from obj in query.ToList()
+                                       where obj.Date.Date > prevDt.Date && obj.Date.Date <= new DateTime(curDt.Year, curDt.Month, DateTime.DaysInMonth(curDt.Year, curDt.Month))
+                                       select obj;
+                        if (subquery.ToList().Count > 0)
+                        {
+                            float total = subquery.Select(price => price.Price).Average();
+
+                            stkList.Add(new StockPrice() { Price = total, CompanyCode = code, Date = curDt, ID = i2 });
+                        }
                         //take average of all the stck prices the subquery...
                         i2++;
                         dt1 = dt1.AddMonths(i2);
+                        
 
                         if(dt1> toDt)
                         {
-                             subquery = from obj in query.ToList()
-                                           where obj.Date.Date <= dt1.Date
-                                           select obj;
-                             total = subquery.Select(price => price.Price).Average();
 
-                            stkList.Add(new StockPrice() { Price = total, CompanyCode = code, Date = dt1, ID = i2 });
+                             subquery = from obj in query.ToList()
+                                           where obj.Date.Date > new DateTime(curDt.Year, curDt.Month, DateTime.DaysInMonth(curDt.Year, curDt.Month)) && obj.Date.Date <= toDt.Date
+                                           select obj;
+                            if (subquery.ToList().Count > 0)
+                            {
+                                float total = subquery.Select(price => price.Price).Average();
+
+                                stkList.Add(new StockPrice() { Price = total, CompanyCode = code, Date = toDt, ID = i2 });
+                            }
                         }
 
                     }
@@ -122,28 +181,43 @@ namespace CompanyService.Domain.Repositories
                     DateTime dt2 = fromDt;
                     int i1 = 0;
 
-
-                    while (dt2 <= toDt)
+                    if (fromDt.Year == toDt.Year)
                     {
-                        
-                        var subquery = from obj in query.ToList()
-                                       where obj.Date.Date <= dt2.Date
-                                       select obj;
-                        float total = subquery.Select(price => price.Price).Average();
+                        float total = query.ToList().Select(price => price.Price).Average();
 
-                        stkList.Add(new StockPrice() { Price = total, CompanyCode = code, Date = dt2, ID = i1 });
+                        stkList.Add(new StockPrice() { Price = total, CompanyCode = code, Date = toDt, ID = 0 });
+                        return stkList;
+                    }
+
+
+                    while (dt2.Date <= toDt.Date)
+                    {
+                        DateTime curDt = dt2;
+                        DateTime prevDt = dt2.AddDays(-1);
+                        var subquery = from obj in query.ToList()
+                                       where obj.Date.Date > prevDt.Date && obj.Date.Date <= new DateTime(curDt.Year, 12, 31)
+                                       select obj;
+                        if (subquery.ToList().Count > 0)
+                        {
+                            float total = subquery.Select(price => price.Price).Average();
+
+                            stkList.Add(new StockPrice() { Price = total, CompanyCode = code, Date = curDt, ID = i1 });
+                        }
                         //take average of all the stck prices the subquery...
                         i1++;
                         dt2 = dt2.AddYears(i1);
 
-                        if (dt2 > toDt)
+                        if (dt2.Date > toDt.Date)
                         {
                             subquery = from obj in query.ToList()
-                                       where obj.Date.Date <= dt2.Date
+                                       where obj.Date.Date > new DateTime(curDt.Year, 12, 31) && obj.Date.Date <= toDt.Date
                                        select obj;
-                            total = subquery.Select(price => price.Price).Average();
+                            if (subquery.ToList().Count > 0)
+                            {
+                                float total = subquery.Select(price => price.Price).Average();
 
-                            stkList.Add(new StockPrice() { Price = total, CompanyCode = code, Date = dt2, ID = i1 });
+                                stkList.Add(new StockPrice() { Price = total, CompanyCode = code, Date = toDt, ID = i1 });
+                            }
                         }
                     }
                     break;

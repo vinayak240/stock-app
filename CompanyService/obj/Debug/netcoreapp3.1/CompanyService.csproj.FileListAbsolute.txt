@@ -114,5 +114,12 @@ C:\Users\nvina\Documents\phase3\stock-app\CompanyService\bin\Debug\netcoreapp3.1
 C:\Users\nvina\Documents\phase3\stock-app\CompanyService\bin\Debug\netcoreapp3.1\Renci.SshNet.dll
 C:\Users\nvina\Documents\phase3\stock-app\CompanyService\bin\Debug\netcoreapp3.1\SshNet.Security.Cryptography.dll
 C:\Users\nvina\Documents\phase3\stock-app\CompanyService\bin\Debug\netcoreapp3.1\System.Xml.XPath.XmlDocument.dll
+C:\Users\nvina\Documents\phase3\stock-app\CompanyService\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Users\nvina\Documents\phase3\stock-app\CompanyService\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\nvina\Documents\phase3\stock-app\CompanyService\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\nvina\Documents\phase3\stock-app\CompanyService\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\nvina\Documents\phase3\stock-app\CompanyService\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\nvina\Documents\phase3\stock-app\CompanyService\bin\Debug\netcoreapp3.1\Consul.dll
 C:\Users\nvina\Documents\phase3\stock-app\CompanyService\obj\Debug\netcoreapp3.1\CompanyService.csproj.CoreCompileInputs.cache
+C:\Users\nvina\Documents\phase3\stock-app\CompanyService\obj\Debug\netcoreapp3.1\CompanyService.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\nvina\Documents\phase3\stock-app\CompanyService\obj\Debug\netcoreapp3.1\CompanyService.MvcApplicationPartsAssemblyInfo.cache

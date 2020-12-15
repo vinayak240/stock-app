@@ -30,9 +30,9 @@ namespace StockExchangeService.Domain.Repositories
            {
                return str.Split(',').ToList().Contains(name);
            };
-           var query = context.Companies.Where(com => func(com.StockExchanges, name));
+           var query = context.Companies.Where(com => com.StockExchanges.Contains(name));
          
-           return query.ToList();
+           return query;
         }
 
         public IEnumerable<StockExchange> GetStockExchanges()

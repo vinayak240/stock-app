@@ -59,5 +59,11 @@ C:\Users\nvina\Documents\phase3\stock-app\AuthService\bin\Debug\netcoreapp3.1\Mi
 C:\Users\nvina\Documents\phase3\stock-app\AuthService\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
 C:\Users\nvina\Documents\phase3\stock-app\AuthService\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\nvina\Documents\phase3\stock-app\AuthService\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\nvina\Documents\phase3\stock-app\AuthService\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Users\nvina\Documents\phase3\stock-app\AuthService\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\nvina\Documents\phase3\stock-app\AuthService\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\nvina\Documents\phase3\stock-app\AuthService\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\nvina\Documents\phase3\stock-app\AuthService\bin\Debug\netcoreapp3.1\Consul.dll
 C:\Users\nvina\Documents\phase3\stock-app\AuthService\obj\Debug\netcoreapp3.1\AuthService.csproj.CoreCompileInputs.cache
+C:\Users\nvina\Documents\phase3\stock-app\AuthService\obj\Debug\netcoreapp3.1\AuthService.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\nvina\Documents\phase3\stock-app\AuthService\obj\Debug\netcoreapp3.1\AuthService.MvcApplicationPartsAssemblyInfo.cache

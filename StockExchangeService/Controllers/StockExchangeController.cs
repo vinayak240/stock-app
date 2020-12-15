@@ -39,8 +39,8 @@ namespace StockExchangeService.Controllers
         {
             var result = repo.AddStockExchange(exchange);
             if (!result)
-                return BadRequest("Error saving Company");
-            return StatusCode(201);
+                return BadRequest("Error saving Exchange");
+            return Created("No Url", new { message = "Stock Exchange addded" });
         }
     }
 }

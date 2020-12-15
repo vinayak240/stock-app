@@ -53,7 +53,7 @@ namespace SectorService.Controllers
             var result = repo.AddSectors(sector);
             if (!result)
                 return BadRequest("Error saving Sector");
-            return StatusCode(201);
+            return Created("No Url", new { message = "Sector added" });
         }
 
        

@@ -55,7 +55,7 @@ namespace AuthService.Controllers
             if (!result)
                 return BadRequest("Error saving User");
 
-            return Ok(GenerateJwtToken(user.Username)); ;
+            return Created("No URL", GenerateJwtToken(user.Username)); ;
         }
         [Route("login")]
         [HttpPost]
@@ -82,7 +82,8 @@ namespace AuthService.Controllers
                 new Claim(JwtRegisteredClaimNames.Sub, uname),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(ClaimTypes.NameIdentifier, uname),
-                new Claim(ClaimTypes.Role,uname)
+                new Claim(ClaimTypes.Role,uname),
+                new Claim("UserType", "normal")
             };
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JwtKey"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);

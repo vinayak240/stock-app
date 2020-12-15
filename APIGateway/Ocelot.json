@@ -1,0 +1,90 @@
+{
+    "Routes": [
+        {
+            "DownstreamScheme": "http",
+            "DownstreamPathTemplate": "/api/{url}",
+            "ServiceName": "CompanyService",
+            //"DownstreamHostAndPorts": [
+            //    {
+            //        "Host": "localhost",
+            //        "Port": 53547
+            //    }
+            //],
+            "UpstreamPathTemplate": "/api/companyservice/{url}",
+            "UpstreamHttpMethods": [ "GET", "POST", "PUT", "DELETE" ],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "Vinayak",
+                "AllowedScopes": []
+            }
+        },
+        {
+            "DownstreamScheme": "http",
+            "DownstreamPathTemplate": "/api.sector/{url}",
+            "ServiceName": "SectorService",
+            //"DownstreamHostAndPorts": [
+            //    {
+            //        "Host": "localhost",
+            //        "Port": 64904
+            //    }
+            //],
+            "UpstreamPathTemplate": "/api/sectorservice/{url}",
+            "UpstreamHttpMethods": [ "GET", "POST", "PUT", "DELETE" ],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "Vinayak",
+                "AllowedScopes": []
+            }
+        },
+        {
+            "DownstreamScheme": "http",
+            "DownstreamPathTemplate": "/api.exchange/{url}",
+            "ServiceName": "StockExchangeService",
+            //"DownstreamHostAndPorts": [
+            //    {
+            //        "Host": "localhost",
+            //        "Port": 49353
+            //    }
+            //],
+            "UpstreamPathTemplate": "/api/exchangeservice/{url}",
+            "UpstreamHttpMethods": [ "GET", "POST", "PUT", "DELETE" ],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "Vinayak",
+                "AllowedScopes": []
+            }
+        },
+        //{
+        //    "DownstreamScheme": "http",
+        //    "DownstreamPathTemplate": "/api/upload",
+        //    //"ServiceName": "UploadProducts",
+        //    "UpstreamPathTemplate": "/api/bulkupload",
+        //    "UpstreamHttpMethods": [ "POST" ],
+        //    "AuthenticationOptions": {
+        //        "AuthenticationProviderKey": "Vinayak",
+        //        "AllowedScopes": []
+        //    },
+        //    "RouteClaimsRequirement": {
+        //        "UserType": "admin"
+        //    }
+        //}
+        {
+            "DownstreamScheme": "http",
+            "DownstreamPathTemplate": "/api.auth/{url}",
+            "ServiceName": "AuthService",
+            //"DownstreamHostAndPorts": [
+            //    {
+            //        "Host": "localhost",
+            //        "Port": 49985
+            //    }
+            //],
+            "UpstreamPathTemplate": "/api/auth/{url}",
+            "UpstreamHttpMethods": [ "GET", "POST", "PUT", "DELETE" ]
+        }
+    ],
+    "GlobalConfiguration": {
+        "BaseUrl": "http://localhost:54574",
+        "ServiceDiscoveryProvider": {
+            "Host": "localhost",
+            "Port": 8500,
+            "Type": "Consul"
+        }
+    }
+}
