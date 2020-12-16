@@ -147,3 +147,4 @@ C:\Users\nvina\Documents\phase3\stock-app\CompanyServiceTests\bin\Debug\netcorea
 C:\Users\nvina\Documents\phase3\stock-app\CompanyServiceTests\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\nvina\Documents\phase3\stock-app\CompanyServiceTests\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\nvina\Documents\phase3\stock-app\CompanyServiceTests\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\nvina\Documents\phase3\stock-app\CompanyServiceTests\obj\Debug\netcoreapp3.1\CompanyServiceTests.csproj.CoreCompileInputs.cache

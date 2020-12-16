@@ -63,7 +63,7 @@ namespace AuthService
 
             services.AddSwaggerGen(options => options.SwaggerDoc("v1", new OpenApiInfo()
             {
-                Title = "c",
+                Title = "Auth Service Api",
                 Version = "v1"
             }));
             services.AddCors();

@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "q79SCZkuvhYTetiGLdlmdNcw8BpEWa6HU1N+ZYDrCR5H8bq6lASyFaXpghw6wO0zOMmOe3lYExqt+cU6MhQSiw==",
+  "dgSpecHash": "cUul3AqUyKYBr3iQLAJx8BsVv6hJia3miUnbdUDrBuM0LVYk0PblHNFOZ8l5W9aDTWE2JGU5CF6emcdgRQxLVg==",
   "success": true,
   "projectFilePath": "C:\\Users\\nvina\\Documents\\phase3\\stock-app\\SectorService\\SectorService.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\nvina\\.nuget\\packages\\automapper\\10.1.0\\automapper.10.1.0.nupkg.sha512",
+    "C:\\Users\\nvina\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.0\\automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",
     "C:\\Users\\nvina\\.nuget\\packages\\bouncycastle.netcore\\1.8.3\\bouncycastle.netcore.1.8.3.nupkg.sha512",
     "C:\\Users\\nvina\\.nuget\\packages\\consul\\1.6.1.1\\consul.1.6.1.1.nupkg.sha512",
     "C:\\Users\\nvina\\.nuget\\packages\\google.protobuf\\3.11.4\\google.protobuf.3.11.4.nupkg.sha512",
@@ -87,7 +89,7 @@
     "C:\\Users\\nvina\\.nuget\\packages\\system.net.sockets\\4.1.0\\system.net.sockets.4.1.0.nupkg.sha512",
     "C:\\Users\\nvina\\.nuget\\packages\\system.objectmodel\\4.0.12\\system.objectmodel.4.0.12.nupkg.sha512",
     "C:\\Users\\nvina\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
-    "C:\\Users\\nvina\\.nuget\\packages\\system.reflection.emit\\4.0.1\\system.reflection.emit.4.0.1.nupkg.sha512",
+    "C:\\Users\\nvina\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
     "C:\\Users\\nvina\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.0.1\\system.reflection.emit.ilgeneration.4.0.1.nupkg.sha512",
     "C:\\Users\\nvina\\.nuget\\packages\\system.reflection.emit.lightweight\\4.0.1\\system.reflection.emit.lightweight.4.0.1.nupkg.sha512",
     "C:\\Users\\nvina\\.nuget\\packages\\system.reflection.extensions\\4.0.1\\system.reflection.extensions.4.0.1.nupkg.sha512",

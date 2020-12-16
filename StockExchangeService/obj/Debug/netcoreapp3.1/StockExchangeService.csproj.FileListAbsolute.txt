@@ -57,6 +57,8 @@ C:\Users\nvina\Documents\phase3\stock-app\StockExchangeService\bin\Debug\netcore
 C:\Users\nvina\Documents\phase3\stock-app\StockExchangeService\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\nvina\Documents\phase3\stock-app\StockExchangeService\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\nvina\Documents\phase3\stock-app\StockExchangeService\bin\Debug\netcoreapp3.1\Consul.dll
+C:\Users\nvina\Documents\phase3\stock-app\StockExchangeService\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\nvina\Documents\phase3\stock-app\StockExchangeService\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\nvina\Documents\phase3\stock-app\StockExchangeService\obj\Debug\netcoreapp3.1\StockExchangeService.csproj.CoreCompileInputs.cache
 C:\Users\nvina\Documents\phase3\stock-app\StockExchangeService\obj\Debug\netcoreapp3.1\StockExchangeService.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\nvina\Documents\phase3\stock-app\StockExchangeService\obj\Debug\netcoreapp3.1\StockExchangeService.MvcApplicationPartsAssemblyInfo.cache

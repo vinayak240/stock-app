@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Consul;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -36,7 +37,10 @@ namespace SectorService
             services.AddScoped<ISectorRepository, SectorRepository>();
             services.AddScoped<ICompanyRepository, CompanyRepository>();
             services.AddScoped<IStockPriceRepository, StockPriceRepository>();
-
+            services.AddScoped<ISectorService, SectorService.Domain.Services.SectorService>();
+            services.AddScoped<ICompanyService, SectorService.Domain.Services.CompanyService>();
+            services.AddScoped<IStockPriceService, SectorService.Domain.Services.StockPriceService>();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddSwaggerGen(options => options.SwaggerDoc("v1", new OpenApiInfo()
             {
                 Title = "Sector Service Api",

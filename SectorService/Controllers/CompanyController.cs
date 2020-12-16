@@ -14,18 +14,18 @@ namespace SectorService.Controllers
     [ApiController]
     public class CompanyController : ControllerBase
     {
-        readonly ICompanyRepository repo;
+        readonly ICompanyService service;
 
-        public CompanyController(ICompanyRepository repo)
+        public CompanyController(ICompanyService service)
         {
-            this.repo = repo;
+            this.service = service;
         }
 
         // POST api/company
         [HttpPost]
         public IActionResult AddCompany([FromBody] Company company)
         {
-            var result = repo.AddCompany(company);
+            var result = service.AddCompany(company);
             if (!result)
                 return BadRequest("Error saving Company");
             return StatusCode(201);
@@ -38,12 +38,12 @@ namespace SectorService.Controllers
             if (obj == null)
                 return BadRequest("Company is required");
 
-            var com = repo.GetCompany(obj.CompanyCode);
+            var com = service.GetCompany(obj.CompanyCode);
 
             if (com == null)
                 return NotFound();
 
-            var result = repo.UpdateCompany(obj);
+            var result = service.UpdateCompany(obj);
             if (result)
                 return Ok();
             else
@@ -54,12 +54,12 @@ namespace SectorService.Controllers
         [HttpDelete("{code}")]
         public IActionResult Delete(string code)
         {
-            var com = repo.GetCompany(code);
+            var com = service.GetCompany(code);
 
             if (com == null)
                 return NotFound();
 
-            var result = repo.DeleteCompany(code);
+            var result = service.DeleteCompany(code);
             if (result)
                 return NoContent();
             else

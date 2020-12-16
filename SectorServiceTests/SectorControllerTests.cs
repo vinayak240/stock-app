@@ -12,6 +12,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Mvc;
 using SectorService.Entities;
+using AutoMapper;
+using SectorService.AutoMapperProfiles;
+using SectorService.Domain.Services;
+using SectorService.Dtos;
 
 namespace SectorServiceTests
 {
@@ -19,7 +23,6 @@ namespace SectorServiceTests
     class SectorControllerTests
     {
         SectorController Sc;
-        //ICompanyRepository repo;
         [OneTimeSetUp]
         public void Initialize()
         {
@@ -31,14 +34,14 @@ namespace SectorServiceTests
             DbContextOptions<SectorDbContext> options = new DbContextOptionsBuilder<SectorDbContext>().UseMySQL(str).Options;
             SectorDbContext ObjContext = new SectorDbContext(options);
             ISectorRepository ObjRepository = new SectorRepository(ObjContext);
-            //repo = new CompanyRepository(ObjContext);
-            //Mapper ObjMapper = new Mapper(new MapperConfiguration(config =>
-            //{
-            //    config.AddProfile(new ProductsDtoProfile());
-            //}));
+            
+            Mapper ObjMapper = new Mapper(new MapperConfiguration(config =>
+            {
+                config.AddProfile(new SectorDtoProfile());
+            }));
 
-            //IProductService ObjService = new ProductService(ObjRepository, ObjMapper);
-            Sc = new SectorController(ObjRepository);
+            ISectorService ObjService = new SectorService.Domain.Services.SectorService(ObjRepository, ObjMapper);
+            Sc = new SectorController(ObjService);
         }
 
         [Test]
@@ -65,7 +68,7 @@ namespace SectorServiceTests
         [Test]
         public void AddSectorTest_ForSuccessStatusCode()
         {
-            var sector = new Sector()
+            var sector = new SectorDto()
             {
                Name="Test Sector",
                Description="This is a Test Sector"

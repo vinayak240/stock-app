@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Consul;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -35,6 +36,10 @@ namespace StockExchangeService
             services.AddDbContext<StockExchangeDbContext>(options => options.UseMySQL(connection));
             services.AddScoped<ICompanyRepository, CompanyRepository>();
             services.AddScoped<IStockExchangeRepository, StockExchangeRepository>();
+            services.AddScoped<IStockExchangeService, StockExchangeService.Domain.Services.StockExchangeService>();
+            services.AddScoped<ICompanyService, StockExchangeService.Domain.Services.CompanyService>();
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddSwaggerGen(options => options.SwaggerDoc("v1", new OpenApiInfo()
             {
                 Title = "Stock Exchange Service Api",

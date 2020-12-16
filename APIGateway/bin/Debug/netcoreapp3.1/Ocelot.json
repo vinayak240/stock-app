@@ -51,20 +51,20 @@
                 "AllowedScopes": []
             }
         },
-        //{
-        //    "DownstreamScheme": "http",
-        //    "DownstreamPathTemplate": "/api/upload",
-        //    //"ServiceName": "UploadProducts",
-        //    "UpstreamPathTemplate": "/api/bulkupload",
-        //    "UpstreamHttpMethods": [ "POST" ],
-        //    "AuthenticationOptions": {
-        //        "AuthenticationProviderKey": "Vinayak",
-        //        "AllowedScopes": []
-        //    },
-        //    "RouteClaimsRequirement": {
-        //        "UserType": "admin"
-        //    }
-        //}
+        {
+            "DownstreamScheme": "http",
+            "DownstreamPathTemplate": "/api.upload/upload",
+            "ServiceName": "UploadService",
+            "UpstreamPathTemplate": "/api/bulkupload",
+            "UpstreamHttpMethods": [ "POST" ],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "Vinayak",
+                "AllowedScopes": []
+            },
+            "RouteClaimsRequirement": {
+                "UserType": "admin"
+            }
+        },
         {
             "DownstreamScheme": "http",
             "DownstreamPathTemplate": "/api.auth/{url}",

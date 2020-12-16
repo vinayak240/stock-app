@@ -12,6 +12,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Mvc;
 using StockExchangeService.Entities;
+using StockExchangeService.Dtos;
+using AutoMapper;
+using StockExchangeService.AutoMapperProfiles;
 
 namespace StockExchangeServiceTests
 {
@@ -30,7 +33,15 @@ namespace StockExchangeServiceTests
             DbContextOptions<StockExchangeDbContext> options = new DbContextOptionsBuilder<StockExchangeDbContext>().UseMySQL(str).Options;
             StockExchangeDbContext ObjContext = new StockExchangeDbContext(options);
             IStockExchangeRepository ObjRepository = new StockExchangeRepository(ObjContext);
-            Stc = new StockExchangeController(ObjRepository);
+            
+           
+            Mapper ObjMapper = new Mapper(new MapperConfiguration(config =>
+            {
+                config.AddProfile(new StockExchangeDtoProfile());
+            }));
+
+            IStockExchangeService ObjService = new StockExchangeService.Domain.Services.StockExchangeService(ObjRepository, ObjMapper);
+            Stc = new StockExchangeController(ObjService);
         }
 
         [Test]
@@ -50,7 +61,7 @@ namespace StockExchangeServiceTests
         [Test]
         public void AddStockExchangeTest_ForSuccessStatusCode()
         {
-            var exchange = new StockExchange()
+            var exchange = new StockExchangeDto()
             {
                 Name = "Test Exchange",
                 Description = "This is a Test Sector",

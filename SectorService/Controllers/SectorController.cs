@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SectorService.Domain.Contracts;
+using SectorService.Dtos;
 using SectorService.Entities;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -14,25 +15,28 @@ namespace SectorService.Controllers
     [ApiController]
     public class SectorController : ControllerBase
     {
-        readonly ISectorRepository repo;
+        readonly ISectorService service;
 
-        public SectorController(ISectorRepository repo)
+        public SectorController(ISectorService service)
         {
-            this.repo = repo;
+            this.service = service;
         }
 
         // GET: api/<SectorController>
         [HttpGet]
+        [ProducesResponseType(200)]
         public IActionResult Get()
         {
-            return Ok(repo.GetSectors());
+            return Ok(service.GetSectors());
         }
 
         // GET api/<SectorController>/5
         [HttpGet("{id}")]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(200)]
         public IActionResult GetById(int id)
         {
-            var Obj = repo.GetSector(id);
+            var Obj = service.GetSector(id);
             if (Obj == null)
                 return NotFound();
 
@@ -41,16 +45,19 @@ namespace SectorService.Controllers
 
         // GET api/sector/id/companies
         [HttpGet("{name}/companies")]
+        [ProducesResponseType(200)]
         public IActionResult GetCompanyList(string name)
         {
-            return Ok(repo.GetSectorCompanies(name));
+            return Ok(service.GetSectorCompanies(name));
         }
 
         // POST api/<SectorController>
         [HttpPost]
-        public IActionResult Post([FromBody] Sector sector)
+        [ProducesResponseType(400)]
+        [ProducesResponseType(201)]
+        public IActionResult Post([FromBody] SectorDto sector)
         {
-            var result = repo.AddSectors(sector);
+            var result = service.AddSectors(sector);
             if (!result)
                 return BadRequest("Error saving Sector");
             return Created("No Url", new { message = "Sector added" });

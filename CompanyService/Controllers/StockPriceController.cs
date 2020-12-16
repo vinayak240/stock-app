@@ -24,16 +24,21 @@ namespace CompanyService.Controllers
 
         // POST api.sector/stock/
         [HttpPost]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(201)]
         public IActionResult Post([FromBody] StockPriceDto price)
         {
             var result = service.AddStockPrice(price);
             if (!result)
                 return BadRequest("Error saving Stock Price");
-            return StatusCode(201);
+            return Created("No URL", new { message="Stock Price Added"});
         }
 
         // PUT api.sector/stock/id
         [HttpPut("{id}")]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(200)]
         public IActionResult Put(int id, [FromBody] StockPriceDto obj)
         {
             if (obj == null)
@@ -53,6 +58,9 @@ namespace CompanyService.Controllers
 
         // DELETE api/<StockPriceController>/5
         [HttpDelete("{id}")]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(204)]
         public IActionResult Delete(int id)
         {
             var com = service.GetStockPrice(id);

@@ -24,6 +24,8 @@ namespace CompanyService.Controllers
 
         // GET: api/company
         [HttpGet]
+        
+        [ProducesResponseType(200, Type = typeof(CompanyDto[]))]
         public IActionResult Get()
         {
             return Ok(service.GetCompanies());
@@ -31,6 +33,8 @@ namespace CompanyService.Controllers
 
         // GET api/company/id
         [HttpGet("{code}")]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(200, Type = typeof(CompanyDto))]
         public IActionResult GetById(string code)
         {
             var Obj = service.GetCompany(code);
@@ -41,6 +45,8 @@ namespace CompanyService.Controllers
         }
 
         [HttpGet("filter/{cname}")]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(200)]
         public IActionResult GetMatching(string cname)
         {
             var Obj = service.GetMatchingCompanies(cname);
@@ -52,11 +58,15 @@ namespace CompanyService.Controllers
 
         // GET api/company/id/Ipos
         [HttpGet("{code}/ipos")]
+        [ProducesResponseType(200)]
         public IActionResult GetCompanyIPODetails(string code)
         {
             return Ok(service.GetCompanyIPODetails(code));
         }
+
         [HttpGet("{code}/stocks/{fromDT}/{toDt}/{period}")]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(200)]
         public IActionResult GetCompanyStockPrice(string code, DateTime fromDt, DateTime toDt, string period)
         {
             if(fromDt > toDt)
@@ -69,16 +79,45 @@ namespace CompanyService.Controllers
 
         // POST api/company
         [HttpPost]
-        public IActionResult AddCompany([FromBody] CompanyDto company)
+        [ProducesResponseType(400)]
+        [ProducesResponseType(201)]
+        public async Task<IActionResult> AddCompany([FromBody] CompanyDto company)
         {
             var result = service.AddCompany(company);
             if (!result)
                 return BadRequest("Error saving Company");
+            var sectorClient = new SectorApiClient.SectorApiClient();
+            var exchangeClient = new StockExhangeApi.StockExchangeClient("http://localhost:49353/");
+
+            var c1 = new SectorApiClient.Company()
+            {
+                CompanyCode = company.CompanyCode,
+                Description = company.Description,
+                Name = company.Name,
+                SectorName = company.SectorName,
+
+            };
+
+            var c2 = new StockExhangeApi.Company()
+            {
+                CompanyCode = company.CompanyCode,
+                Description = company.Description,
+                Name = company.Name,
+                StockExchanges = company.StockExchanges
+
+            };
+
+            await sectorClient.CompanyAsync(c1);
+            await exchangeClient.CompanyAsync(c2);
+
             return Created("No Url", new { message = "Company addded" });
         }
 
         // PUT api/company/id
         [HttpPut("{code}")]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(200)]
         public IActionResult UpdateCompany(string code, [FromBody] CompanyDto obj)
         {
             if (obj == null)
@@ -98,6 +137,9 @@ namespace CompanyService.Controllers
 
         // DELETE api/<CompanyController>/5
         [HttpDelete("{code}")]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(204)]
         public IActionResult Delete(string code)
         {
             var com = service.GetCompany(code);

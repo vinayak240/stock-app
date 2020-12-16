@@ -147,3 +147,8 @@ C:\Users\nvina\Documents\phase3\stock-app\AuthServiceTests\bin\Debug\netcoreapp3
 C:\Users\nvina\Documents\phase3\stock-app\AuthServiceTests\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 C:\Users\nvina\Documents\phase3\stock-app\AuthServiceTests\obj\Debug\netcoreapp3.1\AuthServiceTests.dll
 C:\Users\nvina\Documents\phase3\stock-app\AuthServiceTests\obj\Debug\netcoreapp3.1\AuthServiceTests.pdb
+C:\Users\nvina\Documents\phase3\stock-app\AuthServiceTests\bin\Debug\netcoreapp3.1\Consul.dll
+C:\Users\nvina\Documents\phase3\stock-app\AuthServiceTests\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Users\nvina\Documents\phase3\stock-app\AuthServiceTests\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\nvina\Documents\phase3\stock-app\AuthServiceTests\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\nvina\Documents\phase3\stock-app\AuthServiceTests\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll

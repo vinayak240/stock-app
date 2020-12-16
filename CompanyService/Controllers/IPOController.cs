@@ -24,6 +24,8 @@ namespace CompanyService.Controllers
 
         // POST api/ipo
         [HttpPost]
+        [ProducesResponseType(400)]  
+        [ProducesResponseType(201)]
         public IActionResult AddIPO([FromBody] IPODto ipo)
         {
             //string str = ipo.OpenDate.ToString();
