@@ -109,7 +109,7 @@ namespace CompanyService.Controllers
 
             await sectorClient.CompanyAsync(c1);
             await exchangeClient.CompanyAsync(c2);
-
+       
             return Created("No Url", new { message = "Company addded" });
         }
 
@@ -118,7 +118,7 @@ namespace CompanyService.Controllers
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
         [ProducesResponseType(200)]
-        public IActionResult UpdateCompany(string code, [FromBody] CompanyDto obj)
+        public  IActionResult UpdateCompany(string code, [FromBody] CompanyDto obj)
         {
             if (obj == null)
                 return BadRequest("Company is required");
@@ -130,7 +130,33 @@ namespace CompanyService.Controllers
 
             var result = service.UpdateCompany(obj);
             if (result)
+            {
+                //var sectorClient = new SectorApiClient.SectorApiClient();
+                //var exchangeClient = new StockExhangeApi.StockExchangeClient("http://localhost:49353/");
+
+                //var c1 = new SectorApiClient.Company()
+                //{
+                //    CompanyCode = obj.CompanyCode,
+                //    Description = obj.Description,
+                //    Name = obj.Name,
+                //    SectorName = obj.SectorName,
+
+                //};
+
+                //var c2 = new StockExhangeApi.Company()
+                //{
+                //    CompanyCode = obj.CompanyCode,
+                //    Description = obj.Description,
+                //    Name = obj.Name,
+                //    StockExchanges = obj.StockExchanges
+
+                //};
+
+                //await sectorClient.Company2Async(code, c1);
+                //await exchangeClient.Company2Async(code, c2);
+
                 return Ok("Company Updated");
+            }
             else
                 return BadRequest("Update failed");
         }

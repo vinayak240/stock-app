@@ -12,7 +12,7 @@ namespace SectorService.Domain.Contracts
         IEnumerable<SectorDto> GetSectors();
         SectorDto GetSector(int id);
         bool AddSectors(SectorDto sector);
-        //public IEnumerable<StockPrice> GetSectorStockPrice(int id, DateTime fromDt, DateTime toDt, string period);
+        public IEnumerable<StockPrice> GetSectorStockPrice(string name, DateTime fromDt, DateTime toDt, string period);
         IEnumerable<Company> GetSectorCompanies(string name);
     }
 }

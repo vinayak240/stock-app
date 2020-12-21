@@ -89,6 +89,7 @@ namespace AuthService.Controllers
             var response = new Token
             {
                 uname = uname,
+                userType = "admin",
                 token = new JwtSecurityTokenHandler().WriteToken(token)
             };
             return response;

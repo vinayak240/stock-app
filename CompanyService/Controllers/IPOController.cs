@@ -22,6 +22,15 @@ namespace CompanyService.Controllers
             this.service = service;
         }
 
+        // GET: api/ipo
+        [HttpGet]
+
+        [ProducesResponseType(200, Type = typeof(IPODto[]))]
+        public IActionResult Get()
+        {
+            return Ok(service.GetIpos());
+        }
+
         // POST api/ipo
         [HttpPost]
         [ProducesResponseType(400)]  

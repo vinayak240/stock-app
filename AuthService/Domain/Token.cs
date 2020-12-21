@@ -9,5 +9,8 @@ namespace AuthService.Domain
     {
         public string uname { get; set; }
         public string token { get; set; }
+        public string userType { get; set; }
+
+
     }
 }

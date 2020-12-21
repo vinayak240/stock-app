@@ -9,5 +9,7 @@ namespace CompanyService.Domain.Contracts
     public interface IIPOService
     {
         bool AddIPO(IPODto ipo);
+        IEnumerable<IPODto> GetIpos();
+
     }
 }

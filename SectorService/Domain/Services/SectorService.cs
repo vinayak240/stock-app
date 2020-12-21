@@ -44,5 +44,13 @@ namespace SectorService.Domain.Services
             var dtos = mapper.Map<IEnumerable<SectorDto>>(sectors);
             return dtos;
         }
+
+        public IEnumerable<StockPrice> GetSectorStockPrice(string name, DateTime fromDt, DateTime toDt, string period)
+        {
+            var stocks = repo.GetSectorStockPrice(name, fromDt, toDt, period);
+          
+            return stocks;
+        }
+
     }
 }

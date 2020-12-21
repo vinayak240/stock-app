@@ -40,7 +40,7 @@ namespace StockExchangeService.Controllers
         // POST api/<StockExchangeController>
         [HttpPost]
         [ProducesResponseType(400)]
-        [ProducesResponseType(204)]
+        [ProducesResponseType(201)]
         public IActionResult Post([FromBody] StockExchangeDto exchange)
         {
             var result = service.AddStockExchange(exchange);

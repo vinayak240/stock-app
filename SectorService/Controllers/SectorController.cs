@@ -48,7 +48,19 @@ namespace SectorService.Controllers
         [ProducesResponseType(200)]
         public IActionResult GetCompanyList(string name)
         {
-            return Ok(service.GetSectorCompanies(name));
+            return Ok(service.GetSectorCompanies(name)); 
+        }
+
+        [HttpGet("{name}/stocks/{fromDT}/{toDt}/{period}")]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(200)]
+        public IActionResult GetSectorStockPrice(string name, DateTime fromDt, DateTime toDt, string period)
+        {
+            if (fromDt > toDt)
+            {
+                return BadRequest("Invalid Dates");
+            }
+            return Ok(service.GetSectorStockPrice(name, fromDt, toDt, period));
         }
 
         // POST api/<SectorController>

@@ -23,5 +23,12 @@ namespace CompanyService.Domain.Services
             var obj = mapper.Map<IPO>(ipo);
             return repo.AddIPO(obj);
         }
+
+        public IEnumerable<IPODto> GetIpos()
+        {
+            var ipos = repo.GetIpos();
+            var dtos = mapper.Map<IEnumerable<IPODto>>(ipos);
+            return dtos;
+        }
     }
 }

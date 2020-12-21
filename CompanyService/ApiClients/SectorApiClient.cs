@@ -120,7 +120,7 @@ namespace SectorApiClient
         public async System.Threading.Tasks.Task Company2Async(string code, Company body, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append("api.sector/company/{code}");
+            urlBuilder_.Append("http://localhost:64904/api.sector/company/{code}");
             urlBuilder_.Replace("{code}", System.Uri.EscapeDataString(ConvertToString(code, System.Globalization.CultureInfo.InvariantCulture)));
     
             var client_ = new System.Net.Http.HttpClient();

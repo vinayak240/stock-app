@@ -22,5 +22,21 @@ namespace CompanyService.Domain.Repositories
             int RowsAdded = context.SaveChanges();
             return RowsAdded > 0;
         }
+
+        public IEnumerable<IPO> GetIpos()
+        {
+            //var query = from obj in context.Ipos
+            //            group obj by obj.CompanyCode into g
+
+            //            select g;
+            //return query.ToList();
+            var query = from obj in context.Ipos
+                        orderby obj.CompanyName
+                        select obj;
+            return query.ToList();
+
+
+            // throw new NotImplementedException();
+        }
     }
 }
