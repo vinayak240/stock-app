@@ -190,7 +190,7 @@ namespace SectorApiClient
         public async System.Threading.Tasks.Task Company3Async(string code, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append("api.sector/company/{code}");
+            urlBuilder_.Append("http://localhost:64904/api.sector/company/{code}");
             urlBuilder_.Replace("{code}", System.Uri.EscapeDataString(ConvertToString(code, System.Globalization.CultureInfo.InvariantCulture)));
     
             var client_ = new System.Net.Http.HttpClient();
@@ -220,7 +220,7 @@ namespace SectorApiClient
                         ProcessResponse(client_, response_);
     
                         var status_ = (int)response_.StatusCode;
-                        if (status_ == 200)
+                        if (status_ == 200 || status_ == 204)
                         {
                             return;
                         }

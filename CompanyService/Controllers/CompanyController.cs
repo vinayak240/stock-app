@@ -118,7 +118,7 @@ namespace CompanyService.Controllers
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
         [ProducesResponseType(200)]
-        public  IActionResult UpdateCompany(string code, [FromBody] CompanyDto obj)
+        public async  Task<IActionResult> UpdateCompany(string code, [FromBody] CompanyDto obj)
         {
             if (obj == null)
                 return BadRequest("Company is required");
@@ -131,29 +131,29 @@ namespace CompanyService.Controllers
             var result = service.UpdateCompany(obj);
             if (result)
             {
-                //var sectorClient = new SectorApiClient.SectorApiClient();
-                //var exchangeClient = new StockExhangeApi.StockExchangeClient("http://localhost:49353/");
+                var sectorClient = new SectorApiClient.SectorApiClient();
+                var exchangeClient = new StockExhangeApi.StockExchangeClient("http://localhost:49353/");
 
-                //var c1 = new SectorApiClient.Company()
-                //{
-                //    CompanyCode = obj.CompanyCode,
-                //    Description = obj.Description,
-                //    Name = obj.Name,
-                //    SectorName = obj.SectorName,
+                var c1 = new SectorApiClient.Company()
+                {
+                    CompanyCode = obj.CompanyCode,
+                    Description = obj.Description,
+                    Name = obj.Name,
+                    SectorName = obj.SectorName,
 
-                //};
+                };
 
-                //var c2 = new StockExhangeApi.Company()
-                //{
-                //    CompanyCode = obj.CompanyCode,
-                //    Description = obj.Description,
-                //    Name = obj.Name,
-                //    StockExchanges = obj.StockExchanges
+                var c2 = new StockExhangeApi.Company()
+                {
+                    CompanyCode = obj.CompanyCode,
+                    Description = obj.Description,
+                    Name = obj.Name,
+                    StockExchanges = obj.StockExchanges
 
-                //};
+                };
 
-                //await sectorClient.Company2Async(code, c1);
-                //await exchangeClient.Company2Async(code, c2);
+                await sectorClient.Company2Async(code, c1);
+                await exchangeClient.Company2Async(code, c2);
 
                 return Ok("Company Updated");
             }
@@ -166,7 +166,7 @@ namespace CompanyService.Controllers
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
         [ProducesResponseType(204)]
-        public IActionResult Delete(string code)
+        public async  Task<IActionResult> Delete(string code)
         {
             var com = service.GetCompany(code);
 
@@ -175,7 +175,16 @@ namespace CompanyService.Controllers
 
             var result = service.DeleteCompany(code);
             if (result)
+            {
+                var sectorClient = new SectorApiClient.SectorApiClient();
+                var exchangeClient = new StockExhangeApi.StockExchangeClient("http://localhost:49353/");
+
+              
+
+                await sectorClient.Company3Async(code);
+                await exchangeClient.Company3Async(code);
                 return NoContent();
+            }
             else
                 return BadRequest("Delete failed");
         }
