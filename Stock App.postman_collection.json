@@ -1,0 +1,885 @@
+{
+	"info": {
+		"_postman_id": "04790d91-b540-45b0-8a1a-cdb83865aa70",
+		"name": "Stock App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CompanyService",
+			"item": [
+				{
+					"name": "http://localhost:53547/api/company/Com1/ipos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CompanyCode\" : \"Com1\",\r\n    \"CompanyName\": \"SalesProEdited\",\r\n    \"PricePerShare\":446.46,\r\n    \"TotalShares\":10000,\r\n    \"OpenDate\":\"2020-12-22T12:10:15\",\r\n    \"Remarks\" : \"This is a simple IPO of company\",\r\n    \"StockExchange\" : \"NSE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:53547/api/company/Com1/ipos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "53547",
+							"path": [
+								"api",
+								"company",
+								"Com1",
+								"ipos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Company By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:53547/api/company/Com1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "53547",
+							"path": [
+								"api",
+								"company",
+								"Com1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Company",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CompanyCode\" : \"Com6\",\r\n    \"Name\": \"Company 6\",\r\n    \"CEO\":\"ABC6\",\r\n    \"Turnover\":10000,\r\n    \"BoardOfDirectors\":\"ABC6,CDE,FGH\",\r\n    \"Description\" : \"This is a simple Desc of company\",\r\n    \"StockExchanges\" : \"NSE,BSE\",\r\n    \"SectorName\": \"Finance\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:53547/api/company/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "53547",
+							"path": [
+								"api",
+								"company",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Company",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CompanyCode\" : \"Com1\",\r\n    \"Name\": \"Company 1 Edited Again\",\r\n    \"CEO\":\"ABC1\",\r\n    \"Turnover\":10000,\r\n    \"BoardOfDirectors\":\"ABC1,CDE,FGH\",\r\n    \"Description\" : \"This is a description of company\",\r\n    \"StockExchanges\" : \"NSE,BS,NYSE\",\r\n    \"SectorName\": \"Finance\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:53547/api/company/Com1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "53547",
+							"path": [
+								"api",
+								"company",
+								"Com1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Company",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:53547/api/company/Com2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "53547",
+							"path": [
+								"api",
+								"company",
+								"Com2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Company IPOS",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:53547/api/company/Com1/ipos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "53547",
+							"path": [
+								"api",
+								"company",
+								"Com1",
+								"ipos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add IPO",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CompanyCode\" : \"Com1\",\r\n    \"CompanyName\": \"Company 1 Edited again\",\r\n    \"PricePerShare\":438.46,\r\n    \"TotalShares\":1000,\r\n    \"OpenDate\":\"2020-12-22T12:10:15\",\r\n    \"Remarks\" : \"This is a simple IPO of company\",\r\n    \"StockExchange\" : \"NSE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:53547/api/ipo/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "53547",
+							"path": [
+								"api",
+								"ipo",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Companies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:53547/api/company/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "53547",
+							"path": [
+								"api",
+								"company",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Matching Companies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:53547/api/company/filter/Com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "53547",
+							"path": [
+								"api",
+								"company",
+								"filter",
+								"Com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Stock Price",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"StockExchange\": \"BSE\",\r\n    \"CompanyCode\": \"Com1\",\r\n    \"Price\": 170.8,\r\n    \"Date\": \"2019-04-04T12:30:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:53547/api/stock/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "53547",
+							"path": [
+								"api",
+								"stock",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Stock Price of Companies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:53547/api/company/Com1/stocks/2019-01-01T12:00:00/2019-01-03T16:30:00/daily",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "53547",
+							"path": [
+								"api",
+								"company",
+								"Com1",
+								"stocks",
+								"2019-01-01T12:00:00",
+								"2019-01-03T16:30:00",
+								"daily"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SectorService",
+			"item": [
+				{
+					"name": "Post Sector",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\": \"Housing\",\r\n    \"Description\": \"This is Housing Sector!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:64904/api.sector/sector/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "64904",
+							"path": [
+								"api.sector",
+								"sector",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sector Microservice Add Company",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CompanyCode\": \"Com1\",\r\n    \"Name\": \"SalesPro\",\r\n    \"SectorName\": \"Finance\",\r\n    \"Description\": \"This the desc of the company\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:64904/api.sector/company/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "64904",
+							"path": [
+								"api.sector",
+								"company",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sector Service Update Stock Price",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Price\": 220,\r\n    \"CompanyCode\": \"Com1\",\r\n    \"StockExchange\": \"NSE\",\r\n    \"Date\": \"2019-03-27T22:54:55\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:64904/api.sector/stock/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "64904",
+							"path": [
+								"api.sector",
+								"stock",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Sector Companies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:64904/api.sector/sector/Finance/companies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "64904",
+							"path": [
+								"api.sector",
+								"sector",
+								"Finance",
+								"companies"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth Service",
+			"item": [
+				{
+					"name": "User SignUp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Username\": \"vinayak\",\r\n    \"Password\": \"12345\",\r\n    \"UserType\": \"normal\",\r\n    \"Email\": \"nvinayak240@gmail.com\",\r\n    \"Confirmed\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:49985/api.auth/user/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49985",
+							"path": [
+								"api.auth",
+								"user",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Username\": \"vinayak\",\r\n    \"Password\": \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:49985/api.auth/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49985",
+							"path": [
+								"api.auth",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Username\": \"Admin-Trial\",\r\n    \"Password\": \"12345\",\r\n    \"UserType\": \"admin\",\r\n    \"Email\": \"nvinayak240@gmail.com\",\r\n    \"Confirmed\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:49985/api.auth/admin/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49985",
+							"path": [
+								"api.auth",
+								"admin",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"Username\": \"Admin-Trial\",\r\n    \"Password\": \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:49985/api.auth/admin/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49985",
+							"path": [
+								"api.auth",
+								"admin",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:49985/api.auth/user/vinayak",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49985",
+							"path": [
+								"api.auth",
+								"user",
+								"vinayak"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ExchangeService",
+			"item": [
+				{
+					"name": "Add Stock Exchange",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\": \"NYSE\",\r\n    \"Address\": \"New York\",\r\n    \"Description\": \"New York Stock Exchange\",\r\n    \"Remarks\": \"NO Remarks\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:49353/api.exchange/exchange/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49353",
+							"path": [
+								"api.exchange",
+								"exchange",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Stock Exchanges",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:49353/api.exchange/exchange/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49353",
+							"path": [
+								"api.exchange",
+								"exchange",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exchange Add Company",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CompanyCode\": \"Com3\",\r\n    \"Name\": \"Company 3\",\r\n    \"StockExchanges\": \"NSE\",\r\n    \"Description\": \"This the desc of the company\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:49353/api.exchange/company/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49353",
+							"path": [
+								"api.exchange",
+								"company",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Compies of Exchange",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:49353/api.exchange/exchange/NSE/companies",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49353",
+							"path": [
+								"api.exchange",
+								"exchange",
+								"NSE",
+								"companies"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Gateway API",
+			"item": [
+				{
+					"name": "GateWay User Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Username\": \"Admin-Trial\",\r\n    \"Password\": \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:54574/api/auth/admin/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "54574",
+							"path": [
+								"api",
+								"auth",
+								"admin",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Gateway Get all Companies",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2aW5heWFrIiwianRpIjoiYzM5OTkxMGEtZjNiZC00NzAwLTlkYjktZDE4YjRlNTBjYWM4IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiJ2aW5heWFrIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoidmluYXlhayIsIlVzZXJUeXBlIjoibm9ybWFsIiwiZXhwIjoxNjA4MjAxNjg5LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCJ9.aIvYW75oiga5AAbMF7X8SigGIjXrtsem9suL3Uf-lcs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:54574/api/companyservice/company/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "54574",
+							"path": [
+								"api",
+								"companyservice",
+								"company",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GateWay Add Company",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2aW5heWFrIiwianRpIjoiYzM5OTkxMGEtZjNiZC00NzAwLTlkYjktZDE4YjRlNTBjYWM4IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiJ2aW5heWFrIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoidmluYXlhayIsIlVzZXJUeXBlIjoibm9ybWFsIiwiZXhwIjoxNjA4MjAxNjg5LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCJ9.aIvYW75oiga5AAbMF7X8SigGIjXrtsem9suL3Uf-lcs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CompanyCode\" : \"Com5\",\r\n    \"Name\": \"Company 5\",\r\n    \"CEO\":\"ABC5\",\r\n    \"Turnover\":50000,\r\n    \"BoardOfDirectors\":\"ABC5,CDE5,FGH5\",\r\n    \"Description\" : \"This is a simple Desc of company 5\",\r\n    \"StockExchanges\" : \"NSE,BSE\",\r\n    \"SectorName\": \"Finance\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:54574/api/companyservice/company/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "54574",
+							"path": [
+								"api",
+								"companyservice",
+								"company",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Gateway Get all Sectors",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2aW5heWFrIiwianRpIjoiYzM5OTkxMGEtZjNiZC00NzAwLTlkYjktZDE4YjRlNTBjYWM4IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiJ2aW5heWFrIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoidmluYXlhayIsIlVzZXJUeXBlIjoibm9ybWFsIiwiZXhwIjoxNjA4MjAxNjg5LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCJ9.aIvYW75oiga5AAbMF7X8SigGIjXrtsem9suL3Uf-lcs",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:54574/api/sectorservice/sector/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "54574",
+							"path": [
+								"api",
+								"sectorservice",
+								"sector",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Gateway Add Sector",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2aW5heWFrIiwianRpIjoiYzM5OTkxMGEtZjNiZC00NzAwLTlkYjktZDE4YjRlNTBjYWM4IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiJ2aW5heWFrIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoidmluYXlhayIsIlVzZXJUeXBlIjoibm9ybWFsIiwiZXhwIjoxNjA4MjAxNjg5LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCJ9.aIvYW75oiga5AAbMF7X8SigGIjXrtsem9suL3Uf-lcs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\": \"Technology\",\r\n    \"Description\": \"Simple Desc of Sector\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:54574/api/sectorservice/sector/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "54574",
+							"path": [
+								"api",
+								"sectorservice",
+								"sector",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Gateway Stock Prices Upload",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbi1UcmlhbCIsImp0aSI6IjkxNWJhYzQ0LWUyOTMtNGYzZC1hNDlhLTY2OWJkZjNhM2U0ZiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiQWRtaW4tVHJpYWwiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbi1UcmlhbCIsIlVzZXJUeXBlIjoiYWRtaW4iLCJleHAiOjE2MDgzMDgxNDUsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3QiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0In0.2H70mLOnQ-EhZVtbfuFbPa-XZLHFEcpwhOJA49mvfPk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n    \"StockExchange\": \"NYSE\",\r\n    \"CompanyCode\": \"Com1\",\r\n    \"Price\": 170.8,\r\n    \"Date\": \"2019-01-05T12:30:00\"\r\n},\r\n{\r\n    \"StockExchange\": \"BSE\",\r\n    \"CompanyCode\": \"Com1\",\r\n    \"Price\": 180.8,\r\n    \"Date\": \"2019-01-05T12:30:00\"\r\n},\r\n{\r\n    \"StockExchange\": \"BSE\",\r\n    \"CompanyCode\": \"Com1\",\r\n    \"Price\": 190.8,\r\n    \"Date\": \"2019-01-07T12:30:00\"\r\n}\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:54574/api/bulkupload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "54574",
+							"path": [
+								"api",
+								"bulkupload"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
